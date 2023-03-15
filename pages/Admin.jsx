@@ -67,6 +67,7 @@ function Admin() {
     router.pathname == "/Admin" && setDataEditor(i)
   }
 
+  console.log(date)
 
   useEffect(() => {
 

@@ -17,8 +17,7 @@ function onAuth(setUserProfile, setUserData, postsIMG, setUserPostsIMG, setUserD
     } else {
       setUserProfile(user)
     }
-    // getData(setUserData, monthAndYear, postsIMG, setUserPostsIMG)
-    getDate(setUserDate)
+    
     getMonthAndYear(setUserMonthAndYear)
     getDayMonthYear(setUserDayMonthYear)
   });

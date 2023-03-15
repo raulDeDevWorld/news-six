@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 import Link from 'next/link'
 import Modal from './Modal'
 
-import Date from './Date'
+import Dates from './Date'
 import styles from '../styles/Header.module.css'
 import { useState } from 'react'
 import Button from '../components/Button'
@@ -15,7 +15,7 @@ import RelojDigital from './RelojDigital'
 import FormAdds from '../components/FormAdds'
 
 import { getDate } from '../utils/Utils'
-import { uploadIMG } from '../firebase/storage'
+import { onAuth, getIndexData } from '../firebase/utils'
 import { writeUserData } from '../firebase/utils'
 import { Fade } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css';
@@ -25,7 +25,7 @@ import { connectStorageEmulator } from 'firebase/storage'
 
 export default function Header(props) {
     const router = useRouter()
-    const { user, userDB, postsIMG, setUserMonthAndYear, setUserDayMonthYear, setUserSuccess, setUserPostsIMG, date } = useUser()
+    const { user, userDB, setUserData, postsIMG, setUserMonthAndYear, setUserDayMonthYear, setUserSuccess, setUserPostsIMG, date, setUserDate } = useUser()
 
     const [data, setData] = useState({})
 
@@ -48,10 +48,26 @@ export default function Header(props) {
     }
 
     function dateEvent(e) {
-        const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+        const months = ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
         const format = e.target.value.split("-")
-        setUserDayMonthYear(`${parseInt(format[2])}-${months[format[1] - 1]}-${format[0]}`)
-        setUserMonthAndYear(`${months[format[1] - 1]}-${format[0]}`)
+        // setUserDayMonthYear(`${parseInt(format[2])}-${months[format[1] - 1]}-${format[0]}`)
+        // setUserMonthAndYear(`${months[format[1] - 1]}-${format[0]}`)
+
+        let d =`${new Date(`${parseInt(format[2])}-${months[format[1] - 1]}-${format[0]}`)}`
+        
+
+
+
+
+        // console.log(e.target.value)
+
+
+        // console.log(new Date(d).getDate())
+
+
+        // console.log(`${parseInt(format[2])}-${months[format[1] - 1]}-${format[0]}`)
+        setUserDate(d)
+        getIndexData(setUserData, d)
     }
 
     function handlerClick(url) {
@@ -81,7 +97,7 @@ export default function Header(props) {
             {router.pathname == "/Admin" && <FormAdds />}
             <header className={styles.header}>
                 <div className={styles.fecha}>
-                    <Date></Date>
+                    <Dates></Dates>
                     <input className={styles.calendario} type="date" id="start" name="trip" onChange={dateEvent} />
                 </div>
                 <div className={styles.portada}>

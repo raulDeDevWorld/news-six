@@ -109,7 +109,7 @@ export default function Form({ topic, value, color }) {
       const ruteDB = `/${topic}/Posts` // Nov-2022/Inicio
       const ruteSTG = `${topic}` // Nov-2022/
       const fileName = `PostImage_${newDate.getTime()}` // PostImage_Tue Nov 15 2022 
-      const object = { [fileName]: { fecha: newDate.toString(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center', nota: '' } }
+      const object = { [fileName]: { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center', nota: '' } }
       setUserSuccess('Cargando')
       writeUserData(ruteDB, object, setUserSuccess, setUserData)
       uploadIMG(ruteSTG, fileName, postImage, setUserSuccess, monthYear)

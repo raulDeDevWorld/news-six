@@ -11,7 +11,7 @@ function getDayMonthYear (setUserDayMonthYear) {
 
 function getDate (setUserDate) {
 
-    const date = Date();
+    const date =new Date();
     
     return setUserDate ? setUserDate(`${date}`) : date
 

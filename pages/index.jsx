@@ -52,7 +52,7 @@ function Home() {
   useEffect(() => {
     getYB()
   }, [])
-  console.log(userDB)
+  console.log(date)
 
   return (
     <Layout>
