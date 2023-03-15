@@ -53,7 +53,7 @@ export default function Header(props) {
         // setUserDayMonthYear(`${parseInt(format[2])}-${months[format[1] - 1]}-${format[0]}`)
         // setUserMonthAndYear(`${months[format[1] - 1]}-${format[0]}`)
 
-        let d =`${new Date(`${parseInt(format[2])}-${months[format[1] - 1]}-${format[0]}`)}`
+        let d =`${new Date(parseInt(format[0]), parseInt(format[1] - 1), format[0], 23, 59, 0)}`
         
 
 
