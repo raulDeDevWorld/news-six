@@ -64,6 +64,7 @@ function handleSignOut () {
 
 // -------------------------------Firebase Realtime Database------------------------------------
 
+const dbRef = ref(getDatabase());
 
 let allData = {}
 
